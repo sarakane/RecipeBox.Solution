@@ -1,7 +1,7 @@
 # _Recipe Box_
 
 <h1 align="left">
-  <img width="340" height="280" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRGI07bMa5CbHtCCyfbkSQUkM5T2pM8gAGsGg&usqp=CAU">
+  <img width="225" height="225" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRGI07bMa5CbHtCCyfbkSQUkM5T2pM8gAGsGg&usqp=CAU">
 </h1>
 
 
@@ -19,8 +19,8 @@ _This application will allow users to enter a recipe with ingredients and instru
 
 ## Specifications
 
-| Spec | Input | Output |
-| :--- | :---: | ---: |
+| User Stories |
+| :--- |
 | As a user I want to be able to add a recipe with ingredients and instructions, so I can reference how to prepare my favorite dishes.  |       |       |
 | As a user I want to be ablet to tag my recipes with different categories for easy reference later. |    |     |
 | As a user I want to be able to update and delete tags so I can have more flexibility with how I categorize recipes.   |     |     |
