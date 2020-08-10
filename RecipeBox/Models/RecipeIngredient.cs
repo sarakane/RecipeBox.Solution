@@ -1,4 +1,4 @@
-namespace RecipeBox.Model
+namespace RecipeBox.Models
 {
   public class RecipeIngredient
   {
