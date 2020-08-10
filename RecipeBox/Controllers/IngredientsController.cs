@@ -27,9 +27,33 @@ namespace RecipeBox.Controllers
           .FirstOrDefault(ingredient => ingredient.IngredientId == id);
       return View(thisIngredient);
     }
+
     public ActionResult Create()
     {
-      
+      return View();
     }
+    [HttpPost]
+    public ActionResult Create(Ingredient ingredient)
+    {
+      _db.Ingredients.Add(ingredient);
+      
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
+    public ActionResult Edit(int id)
+    {
+      var thisIngredient = _db.Ingredients.FirstOrDefault(ingredients => ingredients.IngredientId == id);
+      return View(thisIngredient);
+    }
+    [HttpPost]
+    public ActionResult Edit(Ingredient ingredient)
+    {
+      _db.Entry(ingredient).State = EntityState.Modified;
+      _db.SaveChanges();
+      return RedirectToAction("Details", new { id = ingredient.IngredientId });
+    }
+
+    
   }
 }
