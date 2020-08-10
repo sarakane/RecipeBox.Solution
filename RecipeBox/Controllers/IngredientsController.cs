@@ -84,21 +84,14 @@ namespace RecipeBox.Controllers
     }
 
     [HttpPost]
-    public ActionResult Edit(Ingredient ingredient, int RecipeId)
-    {
-      var testVariable = _db.RecipeIngredient.FirstOrDefault(join => join.IngredientId == ingredient.IngredientId && join.RecipeId == RecipeId);
-
-      if (testVariable != null)
-      {
-        _db.Entry(ingredient).State = EntityState.Modified;
-        _db.SaveChanges();
-        return RedirectToAction("Details", new { id = ingredient.IngredientId });
-      }
-      if (RecipeId != 0)
+    public ActionResult AddRecipe(Ingredient ingredient, int RecipeId)
+    {     
+      if (RecipeId != 0 && !_db.RecipeIngredient.Any(x => x.RecipeId == RecipeId && x.IngredientId == ingredient.IngredientId))
       {
         _db.RecipeIngredient.Add(new RecipeIngredient() { RecipeId = RecipeId, IngredientId = ingredient.IngredientId });
       }
-      _db.Entry(ingredient).State = EntityState.Modified;
+      _db.SaveChanges();
+      return RedirectToAction("Details", new { id = ingredient.IngredientId});
     }
   }
 }
