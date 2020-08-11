@@ -75,6 +75,3 @@ namespace RecipeBox.Controllers
     }
   }
 }
-
-  }
-}
