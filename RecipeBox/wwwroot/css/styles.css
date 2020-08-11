@@ -17,6 +17,7 @@ body  {
 }
 h1  {
   font-family: 'Rowdies', cursive;
+  text-shadow: 1px 1px 0px #15ff00;
 }
 
 p {
