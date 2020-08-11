@@ -27,5 +27,22 @@ namespace RecipeBox.Controllers
       ViewBag.TagId = new SelectList(_db.Tags, "TagId", "Name");
       return View();
     }
+
+    [HttpPost]
+    public ActionResult Create(Recipe recipe, int TagId)
+    {
+      _db.Recipes.Add(recipe);
+      if  (TagId != 0)
+      {
+        _db.TagRecipe.Add(new TagRecipe() { TagId = TagId, RecipeId = recipe.RecipeId });
+      }
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
+    public ActionResult Details(int id)
+    {
+      
+    }
   }
 }
