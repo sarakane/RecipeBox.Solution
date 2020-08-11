@@ -34,6 +34,42 @@ namespace RecipeBox.Controllers
       return RedirectToAction("Index");
     }
 
-    
+    public ActionResult Details(int id)
+    {
+      var thisTag = _db.Tags
+        .Include(tag => tag.Recipes)
+        .ThenInclude(join => join.Recipe)
+        .FirstOrDefault(tag => tag.TagId == id);
+      return View(thisTag);
+    }
+
+    public ActionResult Edit(int id)
+    {
+      var thisTag = _db.Tags.FirstOrDefault(tag => tag.TagId ==id);
+      return View(thisTag);
+    }
+
+    [HttpPost]
+    public ActionResult Edit (Tag tag)
+    {
+      _db.Entry(tag).State = EntityState.Modified;
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
+    public ActionResult Delete(int id)
+    {
+      var thisTag = _db.Tags.FirstOrDefault(tag => tag.TagId ==id);
+      return View(thisTag);
+    }
+
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(int id)
+    {
+      var thisTag = _db.Tags.FirstOrDefault(tag => tag.TagId == id);
+      _db.Tags.Remove(thisTag);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }
