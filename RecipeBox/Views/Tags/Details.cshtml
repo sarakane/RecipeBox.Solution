@@ -27,3 +27,7 @@ else
     }
   </ul>
 }
+
+<p>@Html.ActionLink("Edit Tag", "Edit", new { id = Model.TagId })</p>
+<p>@Html.ActionLink("Add a recipe", "AddRecipe", new { id = Model.TagId })</p>
+<p>@Html.ActionLink("Delete tag", "Delete", new { id = Model.TagId })</p>
