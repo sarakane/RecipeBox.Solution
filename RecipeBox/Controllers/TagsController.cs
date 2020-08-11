@@ -3,6 +3,7 @@ using RecipeBox.Models;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace RecipeBox.Controllers
 {
@@ -71,5 +72,33 @@ namespace RecipeBox.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
+    public ActionResult AddRecipe(int id)
+    {
+      var thisTag = _db.Tags.FirstOrDefault(tags => tags.TagId == id);
+      ViewBag.RecipeId = new SelectList(_db.Recipes, "RecipeId", "Name");
+      return View(thisTag);
+    }
+
+    [HttpPost]
+    public ActionResult AddRecipe(Tag tag, int RecipeId)
+    {
+      if (RecipeId != 0 && !_db.TagRecipe.Any(x => x.TagId == tag.TagId && x.RecipeId == RecipeId))
+      {
+        _db.TagRecipe.Add(new TagRecipe() { RecipeId = RecipeId, TagId = tag.TagId });
+      }
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+    
+    [HttpPost]
+    public ActionResult RemoveRecipe(int joinId)
+    {
+      var joinEntry = _db.TagRecipe.FirstOrDefault(join => join.TagRecipeId == joinId);
+      _db.TagRecipe.Remove(joinEntry);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
   }
 }
