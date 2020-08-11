@@ -42,7 +42,8 @@ namespace RecipeBox.Controllers
 
     public ActionResult Details(int id)
     {
-      
+      var thisRecipe = _db.Recipes;
+      return View(thisRecipe);
     }
   }
 }
