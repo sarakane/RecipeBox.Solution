@@ -27,8 +27,8 @@ namespace RecipeBox.Controllers
     {
       var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
       var currentUser = await _userManager.FindByIdAsync(userId);
-      var userItems = _db.Recipes.Where(entry => entry.User.Id == currentUser.Id).ToList();
-      return View(userItems);
+      var userRecipes = _db.Recipes.Where(entry => entry.User.Id == currentUser.Id).ToList();
+      return View(userRecipes);
     }
 
     public ActionResult Create()
