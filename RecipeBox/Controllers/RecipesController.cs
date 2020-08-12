@@ -80,5 +80,12 @@ namespace RecipeBox.Controllers
       ViewBag.TagId = new SelectList(_db.Tags, "TagId", "Name");
       return View(thisRecipe);
     }
+
+    public ActionResult AddIngredient(int id)
+    {
+      var thisRecipe = _db.Recipes.FirstOrDefault(recipes => recipes.RecipeId ==id);
+      ViewBag.IngredientId = new SelectList(_db.Ingredients, "IngredientId", "Name");
+      return View(thisRecipe);
+    }
   }
 }
