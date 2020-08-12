@@ -1,0 +1,29 @@
+@{
+  Layout = "_Layout";
+}
+
+@model RecipeBox.Models.Recipe
+
+<h1>Edit this recipe:</h1>
+<h3>@Html.DisplayFor(model => model.Name)</h3>
+<br>
+@using (Html.BeginForm())
+{
+  <table>
+    <tr>
+      @Html.HiddenFor(model => model.RecipeId)
+      <td>@Html.LabelFor(model => model.Name)</td>
+      <td>@Html.EditorFor(model => model.Name)</td>
+    </tr>
+    <tr>
+      <td>@Html.LabelFor(model => model.Instructions)</td>
+      <td>@Html.TextAreaFor(model => model.Instructions)</td>
+    </tr>
+    <tr>
+      <td>@Html.LabelFor(model => model.Rating)</td>
+      <td>@Html.EditorFor(model => model.Rating)</td>
+    </tr>
+  </table>
+  <br>
+  <input type="submit" value="Add" class="btn btn-primary"/>
+}
