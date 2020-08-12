@@ -1,0 +1,33 @@
+@{
+  Layout = "_Layout";
+}
+
+@model RecipeBox.Models.Tag
+
+<h1>Tag Details</h1>
+<h2>@Html.DisplayFor(model => model.Name)</h2>
+<hr />
+
+@if(@Model.Recipes.Count == 0)
+{
+  <p>No recipes have been added to this tag!</p>
+}
+else
+{
+  <h3>Recipes that have this tag:</h3>
+  <ul>
+    @foreach (var join in Model.Recipes)
+    {
+      <li>@join.Recipe.Name</li>
+      @using (Html.BeginForm("RemoveRecipe", "Tags"))
+      {
+        @Html.Hidden("joinId", @join.TagRecipeId)
+        <input type="submit" value="Remove" />
+      }
+    }
+  </ul>
+}
+
+<p>@Html.ActionLink("Edit Tag", "Edit", new { id = Model.TagId })</p>
+<p>@Html.ActionLink("Add a recipe", "AddRecipe", new { id = Model.TagId })</p>
+<p>@Html.ActionLink("Delete tag", "Delete", new { id = Model.TagId })</p>

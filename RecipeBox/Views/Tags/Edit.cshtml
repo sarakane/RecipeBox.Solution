@@ -1,0 +1,16 @@
+@{
+  Layout = "_Layout";
+}
+
+@model RecipeBox.Models.Tag
+
+<h1>Edit this Tag</h1>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.TagId)
+    @Html.LabelFor(model => model.Name)
+    @Html.EditorFor(model => model.Name)<br>
+
+    <input type="submit" value="Update Tag" class="btn btn-outline-primary" />
+}

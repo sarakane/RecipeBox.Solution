@@ -2,11 +2,50 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>To Do List</title>
+    <title>Recipe Box</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Chilanka&family=Dancing+Script:wght@500&family=Rowdies:wght@300&family=Shadows+Into+Light&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/css/styles.css">
   </head>
   <body>
-    @RenderBody()
+    <div class="nav">
+      <nav class="navbar navbar-expand-lg navbar-light">
+      <a class="navbar-brand" href="/">Recipe Box</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/Tags">Tags</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/Recipes">Recipes</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="/Ingredients">Ingredients</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-5">
+          <div class="container">
+            @RenderBody()
+          </div>
+        </div>
+        <div class="col-md-3">
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      @Html.Partial("Footer")
+    </div>
   </body>
 </html>
