@@ -5,8 +5,17 @@
 <div class="homePage">
 <h1>Secret Recipe Box</h1><br>
 <hr>
-<p>@Html.ActionLink("Create an account", "Index", "Account")</p>
-<p>@Html.ActionLink("See all tags", "Index", "Tags", new {@class="link"})</p>
-<p>@Html.ActionLink("See all recipes", "Index", "Recipes", new {@class="link"})</p>
-<p>@Html.ActionLink("See all ingredients", "Index", "Ingredients", new {@class="link"})</p>
+@if (User.Identity.IsAuthenticated)
+{
+  <p>@Html.ActionLink("View account", "Index", "Account")</p>
+  <p>@Html.ActionLink("See all tags", "Index", "Tags", new {@class="link"})</p>
+  <p>@Html.ActionLink("See all recipes", "Index", "Recipes", new {@class="link"})</p>
+  <p>@Html.ActionLink("See all ingredients", "Index", "Ingredients", new {@class="link"})</p>
+}
+else
+{
+  <p>@Html.ActionLink("Sign in/Sign up", "Index", "Account")</p>
+}
+
+
 </div>
